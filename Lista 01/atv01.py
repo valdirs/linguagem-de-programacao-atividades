@@ -16,8 +16,6 @@ p_1=1
 p_2=2
 p_3=2
 media_ponderada2 = ((n1*p_1) + (n2*p_2) + (n3*p_3)) / (p_1 + p_2 + p_3)
-print('A) {}'.format(media_aritmetica))
-print("")
-print('B) {}'.format(media_ponderada))
-print("")
-print('C) {}'.format(media_ponderada2))
+print(f'A) Média aritmética: {media_aritmetica:.2f}')
+print(f'B) Média ponderada (pesos 2, 2, 3): {media_ponderada:.2f}')
+print(f'C) Média ponderada (pesos 1, 2, 2): {media_ponderada2:.2f}')
