@@ -1,0 +1,15 @@
+{
+    "Daniel": {
+        "senha": "burro123",
+        "saldo": 25.0,
+        "transacoes": [
+            "Dep\u00f3sito de R$50.00",
+            "Saque de R$25.00"
+        ]
+    },
+    "Josu\u00e9": {
+        "senha": "rato321",
+        "saldo": 0.0,
+        "transacoes": []
+    }
+}
