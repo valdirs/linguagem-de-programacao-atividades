@@ -1,0 +1,17 @@
+[
+    {
+        "descricao": "Semin\u00e1rio de Ingl\u00eas sobre Simple Past",
+        "prazo": "2025-03-20",
+        "concluida": true
+    },
+    {
+        "descricao": "Prova de Biologia sobre Gen\u00e9tica",
+        "prazo": "29-04-2025",
+        "concluida": false
+    },
+    {
+        "descricao": "Apresenta\u00e7\u00e3o sobre o semin\u00e1rio de Portugu\u00eas",
+        "prazo": "29-04-2025",
+        "concluida": false
+    }
+]
