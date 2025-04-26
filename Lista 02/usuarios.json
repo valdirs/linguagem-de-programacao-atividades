@@ -1,0 +1,10 @@
+{
+    "Valdir Jr.": {
+        "senha": "123j456",
+        "saldo": 1000.0,
+        "transacoes": [
+            "Dep\u00f3sito de R$2000.00",
+            "Saque de R$1000.00"
+        ]
+    }
+}
