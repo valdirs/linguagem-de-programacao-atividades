@@ -8,5 +8,10 @@
         "nome": "Pasta de Dente Colgate",
         "quantidade": 1,
         "preco": 10.0
+    },
+    {
+        "nome": "Camisa polo",
+        "quantidade": 1,
+        "preco": 100.0
     }
 ]
