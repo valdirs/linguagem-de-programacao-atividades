@@ -13,5 +13,15 @@
         "descricao": "Apresenta\u00e7\u00e3o sobre o semin\u00e1rio de Portugu\u00eas",
         "prazo": "29-04-2025",
         "concluida": false
+    },
+    {
+        "descricao": "Pitch",
+        "prazo": "13",
+        "concluida": true
+    },
+    {
+        "descricao": "pitch",
+        "prazo": "13-05-2025",
+        "concluida": false
     }
 ]

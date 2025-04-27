@@ -11,5 +11,12 @@
         "senha": "rato321",
         "saldo": 0.0,
         "transacoes": []
+    },
+    "Fabrizio": {
+        "senha": "fafa22",
+        "saldo": 300000.0,
+        "transacoes": [
+            "Dep\u00f3sito de R$300000.00"
+        ]
     }
 }

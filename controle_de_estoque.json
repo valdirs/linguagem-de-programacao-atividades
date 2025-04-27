@@ -3,5 +3,10 @@
         "nome": "Rexona clinical em creme 58g",
         "quantidade": 2,
         "preco": 23.0
+    },
+    {
+        "nome": "Pasta de Dente Colgate",
+        "quantidade": 1,
+        "preco": 10.0
     }
 ]
