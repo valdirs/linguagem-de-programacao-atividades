@@ -6,14 +6,12 @@ app = Flask(__name__)
 
 DATA_FILE = 'data.json'
 
-# Carrega a pontuação inicial
 def load_scores():
     if not os.path.exists(DATA_FILE):
         return []
     with open(DATA_FILE, 'r') as f:
         return json.load(f)
 
-# Salva nova pontuação
 def save_score(score):
     scores = load_scores()
     scores.append(score)
