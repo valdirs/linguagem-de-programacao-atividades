@@ -4,19 +4,19 @@ import os
 
 app = Flask(__name__)
 
-DATA_FILE = 'data.json'
+ranking = 'ranking.json'
 
 def load_scores():
-    if not os.path.exists(DATA_FILE):
+    if not os.path.exists(ranking):
         return []
-    with open(DATA_FILE, 'r') as f:
+    with open(ranking, 'r') as f:
         return json.load(f)
 
 def save_score(score):
     scores = load_scores()
     scores.append(score)
     scores = sorted(scores, key=lambda x: x['score'], reverse=True)[:7]  # top 7
-    with open(DATA_FILE, 'w') as f:
+    with open(ranking, 'w') as f:
         json.dump(scores, f)
 
 @app.route('/')

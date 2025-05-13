@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranking - Ryan Clicker</title>
+</head>
+<body>
+    <h1>Ranking dos Jogadores</h1>
+    <ol>
+        {% for score in scores %}
+        <li>{{ score.name }} - {{ score.score }} cliques</li>
+        {% endfor %}
+    </ol>
+    <br>
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>
