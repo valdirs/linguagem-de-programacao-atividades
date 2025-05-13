@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ryan Clicker</title>
+</head>
+<body>
+    <h1>Ryan Clicker</h1>
+    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" width="200">
+    <br>
+    <a href="{{ url_for('game') }}"><button>Jogar</button></a>
+    <a href="{{ url_for('skins') }}"><button>Skins</button></a>
+    <a href="{{ url_for('leaderboard') }}"><button>Ranking</button></a>
+</body>
+</html>
