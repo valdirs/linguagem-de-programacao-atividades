@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo - Ryan Clicker</title>
+    <script>
+        let score = 0;
+
+        function addClick() {
+            score++;
+            document.getElementById("score").innerText = score;
+        }
+
+        function submitScore() {
+            const name = prompt("Digite seu nome:");
+            fetch("/submit_score", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: name, score: score })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Pontuação enviada!");
+                window.location.href = "/leaderboard";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Jogo</h1>
+    <p>Cliques: <span id="score">0</span></p>
+    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" width="200" onclick="addClick()">
+    <br><br>
+    <button onclick="submitScore()">Enviar Pontuação</button>
+    <br><br>
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>
