@@ -1,39 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Jogo - Ryan Clicker</title>
+    <meta charset="UTF-8">
+    <title>Ryan Clicker - Jogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&family=Kavoon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="game-page">
+    <h1 class="game-title">Ryan Clicker</h1>
+    <div class="game-container">
+        <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Ryan" class="ryan-img" onclick="incrementar()">
+        <p class="contador">Cliques: <span id="contador">0</span></p>
+        <div class="game-buttons">
+            <a href="{{ url_for('leaderboard') }}"><button class="icon-button">🏆</button></a>
+            <a href="{{ url_for('skins') }}"><button class="icon-button">🎮</button></a>
+        </div>
+    </div>
     <script>
-        let score = 0;
-
-        function addClick() {
-            score++;
-            document.getElementById("score").innerText = score;
-        }
-
-        function submitScore() {
-            const name = prompt("Digite seu nome:");
-            fetch("/submit_score", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name: name, score: score })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert("Pontuação enviada!");
-                window.location.href = "/leaderboard";
-            });
+        let contador = 0;
+        function incrementar() {
+            contador++;
+            document.getElementById("contador").textContent = contador;
         }
     </script>
-</head>
-<body>
-    <h1>Jogo</h1>
-    <p>Cliques: <span id="score">0</span></p>
-    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" width="200" onclick="addClick()">
-    <br><br>
-    <button onclick="submitScore()">Enviar Pontuação</button>
-    <br><br>
-    <a href="{{ url_for('index') }}">Voltar</a>
 </body>
 </html>

@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Ranking - Ryan Clicker</title>
+  <meta charset="UTF-8">
+  <title>Ranking - Ryan Clicker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Ranking dos Jogadores</h1>
-    <ol>
-        {% for score in scores %}
-        <li>{{ score.name }} - {{ score.score }} cliques</li>
-        {% endfor %}
-    </ol>
-    <br>
-    <a href="{{ url_for('index') }}">Voltar</a>
+<body class="leaderboard-screen">
+  <h1>Ranking</h1>
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Posição</th>
+        <th>Nome</th>
+        <th>Pontuação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for score in scores %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ score.name }}</td>
+        <td>{{ score.score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('index') }}" class="btn-voltar">Voltar ao Início</a>
 </body>
 </html>

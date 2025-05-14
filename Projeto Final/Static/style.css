@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffeecf; /* cor de fundo clara do Figma */
+}
+
+.intro-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.title {
+    font-size: 64px;
+    color: #000000; /* vermelho do título no Figma */
+    margin-bottom: 20px;
+    font-family: 'Kavoon', cursive;
+
+}
+
+.intro-image {
+    width: 220px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 #000; /* sombra estilo retrô */
+}
+
+.play-button {
+    font-size: 70px;
+    padding: 8px 50px;
+    background-color: #b72b2b; /* vermelho vibrante do botão */
+    color: rgb(2, 2, 2);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Jomhuria', cursive;
+    box-shadow: 3px 3px 0 #000; /* efeito retrô */
+    transition: transform 0.1s ease-in-out;
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.play-button:active {
+    transform: scale(0.98);
+}
+
+.game-page {
+    background-color: #ffeecf;
+    color: white;
+    text-align: center;
+    font-family: 'Kavoon', cursive;
+    padding: 30px;
+}
+
+.game-title {
+    font-size: 48px;
+    color: #ff5c5c;
+    margin-bottom: 30px;
+}
+
+.ryan-img {
+    width: 200px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.contador {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Jomhuria', cursive;
+    color: #000000;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icon-button {
+    background-color: #d43f3f;
+    color: white;
+    font-size: 36px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Jomhuria', cursive;
+}
+
+
+/* Estilo da página de skins */
+.skins {
+    background-color: #fff6e9; /* fundo claro da paleta */
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.titulo {
+    font-family: 'Kavoon', cursive;
+    color: #ea3e3e; /* vermelho vibrante da paleta */
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.skin-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.skin-container img {
+    width: 150px;
+    height: auto;
+    border-radius: 15px;
+    border: 3px solid #ea3e3e;
+    transition: transform 0.2s;
+}
+
+.skin-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo da página de ranking */
+.ranking {
+    background-color: #fff6e9;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.ranking h1 {
+    font-family: 'Kavoon', cursive;
+    font-size: 48px;
+    color: #ea3e3e;
+    margin-bottom: 30px;
+}
+
+.ranking-table {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    font-size: 24px;
+    font-family: 'Jomhuria', cursive;
+}
+
+.ranking-table th,
+.ranking-table td {
+    border: 2px solid #000;
+    padding: 10px 20px;
+    background-color: #fff;
+}
+
+.ranking-table th {
+    background-color: #ea3e3e;
+    color: white;
+}
+
+.voltar {
+    margin-top: 30px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #ea3e3e;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: background-color 0.2s;
+}
+
+.voltar:hover {
+    background-color: #c73232;
+}

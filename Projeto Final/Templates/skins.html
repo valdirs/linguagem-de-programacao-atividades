@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Skins - Ryan Clicker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Skins</h1>
-    <p>Aqui você poderá ver outras skins futuramente.</p>
-    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" width="150">
-    <br><br>
-    <a href="{{ url_for('index') }}">Voltar</a>
+<body class="skins">
+    <h1 class="titulo">Escolha sua Skin</h1>
+    <div class="skin-container">
+        <div class="skin">
+            <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Skin 1">
+            <button>Selecionar</button>
+        </div>
+        <div class="skin">
+            <img src="{{ url_for('static', filename='images/ryan2.jpg') }}" alt="Skin 2">
+            <button>Selecionar</button>
+        </div>
+    </div>
+    <a href="{{ url_for('index') }}" class="voltar">Voltar</a>
 </body>
 </html>

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Ryan Clicker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Ryan Clicker</h1>
-    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" width="200">
-    <br>
-    <a href="{{ url_for('game') }}"><button>Jogar</button></a>
-    <a href="{{ url_for('skins') }}"><button>Skins</button></a>
-    <a href="{{ url_for('leaderboard') }}"><button>Ranking</button></a>
+<body class="intro-screen">
+
+
+    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Ryan" class="intro-image">
+    <h1 class="title">Ryan Clicker</h1>
+    <a href="{{ url_for('game') }}">
+        <button class="play-button">Jogar</button>
+    </a>
 </body>
 </html>
