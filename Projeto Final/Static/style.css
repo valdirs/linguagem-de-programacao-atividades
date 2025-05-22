@@ -130,21 +130,21 @@ body {
 }
 
 /* Estilo da página de ranking */
-.ranking {
+.leaderboard-screen {
     background-color: #fff6e9;
     min-height: 100vh;
     padding: 20px;
     text-align: center;
 }
 
-.ranking h1 {
+.leaderboard-screen h1 {
     font-family: 'Kavoon', cursive;
     font-size: 48px;
     color: #ea3e3e;
     margin-bottom: 30px;
 }
 
-.ranking-table {
+.leaderboard-table {
     margin: 0 auto;
     width: 80%;
     border-collapse: collapse;
@@ -152,19 +152,19 @@ body {
     font-family: 'Jomhuria', cursive;
 }
 
-.ranking-table th,
-.ranking-table td {
+.leaderboard-table th,
+.leaderboard-table td {
     border: 2px solid #000;
     padding: 10px 20px;
     background-color: #fff;
 }
 
-.ranking-table th {
+.leaderboard-table th {
     background-color: #ea3e3e;
     color: white;
 }
 
-.voltar {
+.btn-voltar {
     margin-top: 30px;
     font-size: 20px;
     text-decoration: none;

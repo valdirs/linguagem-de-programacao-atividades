@@ -1,27 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Ryan Clicker - Jogo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&family=Kavoon&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>Ryan Clicker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      background-color: #f2e7da;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .header-icons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .icon-btn img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .right-icons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #ryan-img {
+      width: 200px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 3px solid #000;
+    }
+
+    .click-text {
+      margin-top: 10px;
+      background-color: white;
+      padding: 10px;
+      border: 2px solid black;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    .timer {
+      font-size: 20px;
+      color: red;
+      margin-top: 10px;
+    }
+
+    .send-score {
+      margin-top: 15px;
+      padding: 10px 15px;
+      font-weight: bold;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="game-page">
-    <h1 class="game-title">Ryan Clicker</h1>
-    <div class="game-container">
-        <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Ryan" class="ryan-img" onclick="incrementar()">
-        <p class="contador">Cliques: <span id="contador">0</span></p>
-        <div class="game-buttons">
-            <a href="{{ url_for('leaderboard') }}"><button class="icon-button">🏆</button></a>
-            <a href="{{ url_for('skins') }}"><button class="icon-button">🎮</button></a>
-        </div>
-    </div>
-    <script>
-        let contador = 0;
-        function incrementar() {
-            contador++;
-            document.getElementById("contador").textContent = contador;
+<body>
+
+  <div class="header-icons">
+    <button class="icon-btn" onclick="location.href='{{ url_for('leaderboard') }}'">
+      <img src="{{ url_for('static', filename='skins-icon.png') }}" alt="Ranking">
+    </button>
+    <button class="icon-btn" onclick="location.href='{{ url_for('skins') }}'">
+      <img src="{{ url_for('static', filename='ranking-icon.png') }}" alt="Skins">
+    </button>
+  </div>
+
+  <img id="ryan-img" src="{{ url_for('static', filename=skin) }}" alt="Ryan">
+  <div class="click-text">Clique em Ryan para ganhar Ryan Clicks</div>
+  <div class="score" id="score">Pontos: 0</div>
+  <div class="timer" id="timer">Tempo: 30s</div>
+  <input type="text" id="nome" placeholder="Digite seu nome" style="margin-top: 15px; padding: 8px; border-radius: 8px; border: 1px solid #000;">
+  <button class="send-score" onclick="enviarPontuacao()">Enviar Pontuação</button>
+
+  <script>
+    let score = 0;
+    let tempoRestante = 30;
+    let timerAtivo = false;
+    let intervalo;
+
+    const scoreEl = document.getElementById('score');
+    const timerEl = document.getElementById('timer');
+    const ryan = document.getElementById('ryan-img');
+
+    ryan.addEventListener('click', () => {
+      if (!timerAtivo) {
+        iniciarTimer();
+        timerAtivo = true;
+      }
+
+      if (tempoRestante > 0) {
+        score++;
+        scoreEl.textContent = 'Pontos: ' + score;
+      }
+    });
+
+    function iniciarTimer() {
+      intervalo = setInterval(() => {
+        tempoRestante--;
+        timerEl.textContent = 'Tempo: ' + tempoRestante + 's';
+
+        if (tempoRestante <= 0) {
+          clearInterval(intervalo);
+          timerEl.textContent = 'Tempo esgotado!';
         }
-    </script>
+      }, 1000);
+    }
+
+    function enviarPontuacao() {
+      if (tempoRestante > 0) {
+        alert("Espere o tempo acabar para enviar sua pontuação!");
+        return;
+      }
+
+      const nome = document.getElementById('nome').value.trim();
+
+      if (nome === "") {
+        alert("Por favor, digite seu nome.");
+        return;
+      }
+
+      fetch("/enviar_pontuacao", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nome: nome, score: score })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Pontuação enviada com sucesso!");
+          window.location.href = "/leaderboard";
+        } else {
+          alert("Erro ao enviar pontuação.");
+        }
+      })
+      .catch(error => {
+        console.error("Erro na requisição:", error);
+        alert("Erro ao enviar pontuação.");
+      });
+    }
+  </script>
 </body>
 </html>

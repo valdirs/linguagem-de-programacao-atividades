@@ -1,22 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Skins - Ryan Clicker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Selecionar Skin</title>
+    <style>
+        body {
+            background-color: #f2e8d5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #4a90e2;
+            margin: 50px auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 25px;
+            border: 5px solid #000;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skin {
+            background-color: black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .skin img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #fff;
+        }
+
+        .skin-name {
+            color: white;
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .voltar:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
-<body class="skins">
-    <h1 class="titulo">Escolha sua Skin</h1>
-    <div class="skin-container">
-        <div class="skin">
-            <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Skin 1">
-            <button>Selecionar</button>
+<body>
+    <div class="container">
+        <div class="grid">
+            <div class="skin">
+                <a href="/selecionar_skin/Ryan.jpeg">
+                    <img src="{{ url_for('static', filename='images/Ryan.jpeg') }}" alt="Ryan">
+                    <div class="skin-name">Ryan</div>
+                </a>
+            </div>
+            <div class="skin">
+                <a href="/selecionar_skin/ryan1.jpg">
+                    <img src="{{ url_for('static', filename='images/ryan1.jpg') }}" alt="Ryan1">
+                    <div class="skin-name">ryan1</div>
+                </a>
+            </div>
+            <div class="skin">
+                <a href="/selecionar_skin/ryan2.jpg">
+                    <img src="{{ url_for('static', filename='images/ryan2.jpg') }}" alt="Ryan2">
+                    <div class="skin-name">ryan2</div>
+                </a>
+            </div>
+            <div class="skin">
+                <a href="/selecionar_skin/Samuryan.jpeg">
+                    <img src="{{ url_for('static', filename='images/Samuryan.jpeg') }}" alt="Samuryan">
+                    <div class="skin-name">Samuryan</div>
+                </a>
+            </div>
+            <div class="skin">
+                <a href="/selecionar_skin/Soldado Ryan.jpeg">
+                    <img src="{{ url_for('static', filename='images/Soldado Ryan.jpeg') }}" alt="Soldado">
+                    <div class="skin-name">Soldado Ryan</div>
+                </a>
+            </div>
+            <div class="skin">
+                <a href="/selecionar_skin/Robryan.jpeg">
+                    <img src="{{ url_for('static', filename='images/Robryan.jpeg') }}" alt="Robryan">
+                    <div class="skin-name">Robryan</div>
+                </a>
+            </div>
         </div>
-        <div class="skin">
-            <img src="{{ url_for('static', filename='images/ryan2.jpg') }}" alt="Skin 2">
-            <button>Selecionar</button>
-        </div>
+
+        <a href="/" class="voltar">Voltar</a>
     </div>
-    <a href="{{ url_for('index') }}" class="voltar">Voltar</a>
 </body>
 </html>

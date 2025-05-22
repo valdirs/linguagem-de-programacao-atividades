@@ -1,30 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Ranking - Ryan Clicker</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Ranking</title>
+    <style>
+        body {
+            background-color: #f3e7db;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .ranking-box {
+            background-color: #5ca9fc;
+            border: 8px solid black;
+            border-radius: 25px;
+            padding: 20px 40px;
+            width: 400px;
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .ranking-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted white;
+            padding: 6px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .score-indicator {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: #b51217;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 2px 2px 0px black;
+            transition: 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #8e0f12;
+        }
+    </style>
 </head>
-<body class="leaderboard-screen">
-  <h1>Ranking</h1>
-  <table class="leaderboard-table">
-    <thead>
-      <tr>
-        <th>Posição</th>
-        <th>Nome</th>
-        <th>Pontuação</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for score in scores %}
-      <tr>
-        <td>{{ loop.index }}</td>
-        <td>{{ score.name }}</td>
-        <td>{{ score.score }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a href="{{ url_for('index') }}" class="btn-voltar">Voltar ao Início</a>
+<body>
+    <div class="ranking-box">
+        {% set total_rcsps = 0 %}
+        {% for i in range(7) %}
+            <div class="ranking-item">
+                <div>
+                    {% if i < scores|length %}
+                        {% set rcsps = scores[i]['score'] / 30 %}
+                        {% set total_rcsps = total_rcsps + rcsps %}
+                        {{ i+1 }}. {{ scores[i]['name'] }}
+                    {% else %}
+                        {{ i+1 }}. ---
+                    {% endif %}
+                </div>
+                <span>
+                    {% if i < scores|length %}
+                        {{ "%.2f" % rcsps }} RCs/s
+                    {% else %}
+                        0.00 RCs/s
+                    {% endif %}
+                </span>
+            </div>
+        {% endfor %}
+
+        <div class="score-indicator">
+            {{ "%.2f" % (total_rcsps / 7) }} RCs/s (Média)
+        </div>
+    </div>
+
+    <form action="{{ url_for('game') }}">
+        <button type="submit" class="back-button">Voltar</button>
+    </form>
 </body>
 </html>
